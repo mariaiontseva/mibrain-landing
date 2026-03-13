@@ -959,11 +959,36 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 reveals.forEach(el => observer.observe(el));
 
-// Form
-document.getElementById('interestForm')?.addEventListener('submit', function(e) {
+// Form → Google Sheets
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyJF40as08rL93tORV_nKOR7yPUMRxj-43uEyu1AIY_45eDV7KtQqUDmkKAnJeR0ICpyQ/exec';
+
+document.getElementById('interestForm')?.addEventListener('submit', async function(e) {
   e.preventDefault();
-  this.style.display = 'none';
-  document.getElementById('formSuccess').classList.add('show');
+  const btn = this.querySelector('.form-submit');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  const data = {
+    firstName: document.getElementById('firstName').value,
+    lastName: document.getElementById('lastName').value,
+    email: document.getElementById('email').value,
+    interest: document.getElementById('interest').value,
+    profession: document.getElementById('profession').value
+  };
+
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    });
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  } catch (err) {
+    btn.textContent = 'Something went wrong — try again';
+    btn.disabled = false;
+  }
 });
 </script>
 
