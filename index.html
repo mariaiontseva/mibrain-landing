@@ -232,6 +232,7 @@ body {
 
 .bottle-wrap {
   position: relative;
+  margin-bottom: 1.5rem;
 }
 .bottle-wrap::before {
   content: '';
@@ -247,10 +248,89 @@ body {
 
 .bottle-img {
   display: block;
-  height: 420px;
-  width: auto;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
   position: relative;
   z-index: 1;
+}
+
+/* ── Supply badge ── */
+.supply-badge {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(196, 117, 43, 0.15);
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(26, 22, 17, 0.06), 0 1px 3px rgba(196, 117, 43, 0.08);
+  animation: badge-in 0.6s ease 0.8s both;
+  white-space: nowrap;
+}
+.supply-badge-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8691C 0%, #D35D15 50%, #C4752B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(232, 105, 28, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.supply-badge-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+  border-radius: 50% 50% 0 0;
+}
+.supply-badge-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: relative;
+  z-index: 1;
+}
+.supply-badge-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.supply-badge-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.supply-badge-desc {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+@keyframes badge-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
 
 .hero-stats {
@@ -718,7 +798,12 @@ footer {
   .hero-sub { margin: 0 auto; }
   .hero-actions { justify-content: center; }
   .hero h1 { font-size: 2.4rem; }
-  .bottle-img { height: 320px; }
+  .bottle-img { max-width: 100%; }
+  .supply-badge { padding: 0.45rem 0.9rem 0.45rem 0.55rem; gap: 0.5rem; }
+  .supply-badge-icon { width: 26px; height: 26px; }
+  .supply-badge-icon svg { width: 13px; height: 13px; }
+  .supply-badge-label { font-size: 0.56rem; }
+  .supply-badge-desc { font-size: 0.62rem; }
   .hero-stats { gap: 1.5rem; }
 
   .stats { grid-template-columns: 1fr; }
@@ -773,7 +858,16 @@ footer {
 
     <div class="hero-right">
       <div class="bottle-wrap">
-        <img class="bottle-img" src="mibrain-bottle-transparent.png" alt="MiBrain™ by Mitocholine — 30ml dropper bottle" />
+        <img class="bottle-img" src="mibrain-bottle-transparent.png" alt="MiBrain™ by Mitocholine — four 30ml dropper bottles" />
+        <div class="supply-badge">
+          <div class="supply-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.5c0 0-5.5 7-5.5 12a5.5 5.5 0 0 0 11 0C17.5 9.5 12 2.5 12 2.5z"/><path d="M12 18v-4" opacity="0.5"/><path d="M10 16l2-2 2 2" opacity="0.5"/></svg>
+          </div>
+          <div class="supply-badge-text">
+            <span class="supply-badge-label">30-Day Supply</span>
+            <span class="supply-badge-desc">4 bottles included</span>
+          </div>
+        </div>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
