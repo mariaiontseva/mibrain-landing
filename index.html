@@ -535,6 +535,49 @@ body {
 }
 
 /* ═══════════════════════════════════════
+   TESTIMONIAL
+   ═══════════════════════════════════════ */
+.testimonial {
+  padding: 5rem 3rem;
+  background: var(--cream);
+}
+.testimonial-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.testimonial-line {
+  width: 40px;
+  height: 2px;
+  background: var(--orange);
+  margin: 0 auto 2.5rem;
+}
+.testimonial-quote {
+  font-family: 'area-normal', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+.testimonial-author {
+  margin-top: 2rem;
+  font-family: 'area-normal', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.testimonial-role {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════
    SOLUTION
    ═══════════════════════════════════════ */
 .solution {
@@ -897,6 +940,8 @@ footer {
   .hero-benefits { gap: 1.5rem; }
   .hero-stats { gap: 1.5rem; }
 
+  .testimonial-quote { font-size: 1.05rem; }
+  .testimonial { padding: 3.5rem 1.5rem; }
   .stats { flex-direction: column; align-items: center; gap: 2rem; }
   .features { grid-template-columns: 1fr; }
   .science-inner { grid-template-columns: 1fr; }
@@ -1002,6 +1047,16 @@ footer {
         <div class="stat-label">to target the<br>Energy Gap</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner reveal">
+    <div class="testimonial-line"></div>
+    <div class="testimonial-quote">"After two weeks on MiBrain, the afternoon fog I'd accepted as normal simply disappeared. I'm thinking faster and staying sharp through evening lectures."</div>
+    <div class="testimonial-author">Dr John Donn</div>
+    <div class="testimonial-role">Neuroscience Researcher, University of Edinburgh</div>
   </div>
 </section>
 
@@ -1191,6 +1246,8 @@ document.getElementById('interestForm')?.addEventListener('submit', async functi
     btn.disabled = false;
   }
 });
+
+
 </script>
 
 </body>
